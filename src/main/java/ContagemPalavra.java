@@ -1,13 +1,25 @@
+import javax.swing.text.html.parser.Entity;
+import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 
-public class ContagemPalavra extends TreeMap<String, Integer> {
+public class ContagemPalavra  {
+
+    private TreeMap<String, Integer> palavrasQtd = new TreeMap<>();
+
+
+
+    //DELEGATE METHOD
+    public Set<Map.Entry<String, Integer>> entrySet() {
+        return palavrasQtd.entrySet();
+    }
 
     public void adicionaPalavra(String palavra) {
-        if (containsKey(palavra)) {
-            Integer qtd = get(palavra);
-            super.put(palavra, ++qtd);
+        if (palavrasQtd.containsKey(palavra)) {
+            Integer qtd = palavrasQtd.get(palavra);
+            palavrasQtd.put(palavra, ++qtd);
         } else {
-            super.put(palavra, 1);
+            palavrasQtd.put(palavra, 1);
         }
     }
 
